@@ -3,7 +3,7 @@ from sys import *
 from os import name, system
 
 missingImport = 0
-bear_shell = "1.3.2.3"
+bear_shell = "1.3.3"
 bear_shell_testing = ""
 testing = open('gitbranch.txt')
 test = testing.read()
@@ -38,7 +38,7 @@ def startupVer():
 	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.2.3'":
+	if str(f) == "b'1.3.3'":
 		print("Bear-Shell is up-to-date")
 		time.sleep(1)
 	else:
@@ -368,12 +368,12 @@ def setupPage():
 
 	if test == 'true':
 		print("""
-	Bear Shell v1.3.2.3 (testing)
+	Bear Shell v1.3.3 (testing)
 	Bear Shell Registration
 		""")
 	else:
 		print("""
-	Bear Shell v1.3.2.3 (stable)
+	Bear Shell v1.3.3 (stable)
 	Bear Shell Registration
 		""")
 
@@ -418,12 +418,12 @@ def loginPage():
 
 	if test == 'true':
 		print("""
-	Bear Shell v1.3.2.3 (testing)
+	Bear Shell v1.3.3 (testing)
 	Bear Shell Login
 		""")
 	else:
 		print("""
-	Bear Shell v1.3.2.3 (stable)
+	Bear Shell v1.3.3 (stable)
 	Bear Shell Login
 		""")
 
@@ -550,7 +550,7 @@ def terminalMain():
 	clearScreen()
 	cwd = os.getcwd()
 	print("Welcome to the Bear-Shell Terminal")
-	print("Ver 1.3.2.3 " + bear_shell_testing)
+	print("Ver 1.3.3 " + bear_shell_testing)
 	def helpCom():
 		clearScreen()
 		print("""
@@ -885,13 +885,13 @@ def homePage():
 	test = testing.read()
 	if test == 'true':
 		print(f"""{bcolors.OKBLUE}
-	Bear Shell v1.3.2.3 (testing)
+	Bear Shell v1.3.3 (testing)
 	Home page
 
 		""")
 	else:
 		print(f"""{bcolors.OKBLUE}
-	Bear Shell v1.3.2.3 (stable)
+	Bear Shell v1.3.3 (stable)
 	Home page
 
 		""")
@@ -1064,7 +1064,7 @@ def homePage():
 	elif select == '7':
 		clearDumbScreen()
 		print(f"""
-{bcolors.OKBLUE}Patch 1.3.2.3:
+{bcolors.OKBLUE}Patch 1.3.3:
 	{bcolors.OKGREEN}[+] Added Frame to start Github Branch Changing in BIOS
 	{bcolors.OKGREEN}[+] Better Import verifier
 	{bcolors.OKGREEN}[+] Missing Import Counter
@@ -1072,19 +1072,19 @@ def homePage():
 	{bcolors.OKGREEN}[+] Added Frame to start Updater
 		{bcolors.FAIL}[-] This Frame is causing lots of bugs! (BEWARE!)
 	{bcolors.OKGREEN}[+] Fixed bug where bios would bring admins back to regular user menu
-{bcolors.OKBLUE}Patch 1.3.2.2:
+{bcolors.OKBLUE}Patch 1.3.2:
 	{bcolors.OKGREEN}[+] Made commands able to type in uppercase and lowercase
 	{bcolors.OKGREEN}[+] Version Checking
 	{bcolors.OKGREEN}[+] Sys Info
-{bcolors.OKBLUE}Update 1.3.2.1:
+{bcolors.OKBLUE}Update 1.3.1:
 	{bcolors.OKGREEN}[+] Added the calculator
 	{bcolors.OKGREEN}[+] Import Verification
 	{bcolors.OKGREEN}[+] Expiremental Command Handling
-{bcolors.OKBLUE}Update 1.3.1.1:
+{bcolors.OKBLUE}Update 1.3.1:
 	{bcolors.OKGREEN}[+] Added 'pip' command
 	{bcolors.OKGREEN}[+] Framework access; see developerGuide.txt for details
 	{bcolors.OKGREEN}[+] Weird bug fix
-{bcolors.OKBLUE}Patch 1.3.0.1:
+{bcolors.OKBLUE}Patch 1.3.1:
 	{bcolors.OKGREEN}[+] Fixed restarting; didn't actually restart the program
 	{bcolors.OKGREEN}[+] Fixed DevPage bug where if command didn't exist it return user back to regular homepage instead of dev page
 	{bcolors.OKGREEN}[+] Fixed small bugs
@@ -1191,7 +1191,7 @@ def homePage():
 		print("Current Github Repo Version: " + str(f))
 		print("Checking if up-to-date...")
 		time.sleep(1)
-		if str(f) == "b'1.3.2.3'":
+		if str(f) == "b'1.3.3'":
 			clearScreen()
 			print("You're up to date!")
 			time.sleep(1)
@@ -1224,13 +1224,13 @@ def devPage():
 	textColor = bcolors.OKGREEN
 	if test == 'true':
 		print(f"""{bcolors.OKBLUE}
-	Bear Shell v1.3.2.3 (testing)
+	Bear Shell v1.3.3 (testing)
 	Home page (DEVELOPER MODE: True)
 
 		""")
 	else:
 		print(f"""{bcolors.OKBLUE}
-	Bear Shell v1.3.2.3 (stable)
+	Bear Shell v1.3.3 (stable)
 	Home page (DEVELOPER MODE: True)
 
 		""")
@@ -1384,7 +1384,7 @@ def devPage():
 	elif select == '7':
 		clearScreen()
 		print(f"""
-{bcolors.OKBLUE}Patch 1.3.2.3:
+{bcolors.OKBLUE}Patch 1.3.3:
 	{bcolors.OKGREEN}[+] Added Frame to start Github Branch Changing in BIOS
 	{bcolors.OKGREEN}[+] Better Import verifier
 	{bcolors.OKGREEN}[+] Missing Import Counter
@@ -1392,19 +1392,19 @@ def devPage():
 	{bcolors.OKGREEN}[+] Added Frame to start Updater
 		{bcolors.FAIL}[-] This Frame is causing lots of bugs! (BEWARE!)
 	{bcolors.OKGREEN}[+] Fixed bug where bios would bring admins back to regular user menu
-{bcolors.OKBLUE}Patch 1.3.2.2:
+{bcolors.OKBLUE}Patch 1.3.2:
 	{bcolors.OKGREEN}[+] Made commands able to type in uppercase and lowercase
 	{bcolors.OKGREEN}[+] Version Checking
 	{bcolors.OKGREEN}[+] Sys Info
-{bcolors.OKBLUE}Update 1.3.2.1:
+{bcolors.OKBLUE}Update 1.3.1:
 	{bcolors.OKGREEN}[+] Added the calculator
 	{bcolors.OKGREEN}[+] Import Verification
 	{bcolors.OKGREEN}[+] Expiremental Command Handling
-{bcolors.OKBLUE}Update 1.3.1.1:
+{bcolors.OKBLUE}Update 1.3.1:
 	{bcolors.OKGREEN}[+] Added 'pip' command
 	{bcolors.OKGREEN}[+] Framework access; see developerGuide.txt for details
 	{bcolors.OKGREEN}[+] Weird bug fix
-{bcolors.OKBLUE}Patch 1.3.0.1:
+{bcolors.OKBLUE}Patch 1.3.1:
 	{bcolors.OKGREEN}[+] Fixed restarting; didn't actually restart the program
 	{bcolors.OKGREEN}[+] Fixed DevPage bug where if command didn't exist it return user back to regular homepage instead of dev page
 	{bcolors.OKGREEN}[+] Fixed small bugs
@@ -1510,7 +1510,7 @@ def devPage():
 		print("Current Github Repo Version: " + str(f))
 		print("Checking if up-to-date...")
 		time.sleep(1)
-		if str(f) == "b'1.3.2.3'":
+		if str(f) == "b'1.3.3'":
 			clearScreen()
 			print("You're up to date!")
 			time.sleep(1)
@@ -1657,7 +1657,7 @@ def devTermMain():
 	clearScreen()
 	cwd = os.getcwd()
 	print("Welcome to the Bear-Shell Terminal")
-	print("Ver 1.3.2.3")
+	print("Ver 1.3.3")
 	print("(DEVELOPER MODE: ACTIVATED) (ROOT: TRUE)")
 	def helpCom():
 		clearScreen()
@@ -1924,7 +1924,7 @@ def rootTerm():
 	clearScreen()
 	cwd = os.getcwd()
 	print(f"{bcolors.OKCYAN}Welcome to the Bear-Shell Terminal")
-	print("Ver 1.3.2.3")
+	print("Ver 1.3.3")
 	print("You're in the ROOT terminal, enter command 'exit' to return to menu.")
 	def helpCom():
 		clearScreen()
@@ -3152,7 +3152,7 @@ def rootTest():
 					print("Current Github Repo Version: " + str(f))
 					print("Checking if up-to-date...")
 					time.sleep(1)
-					if str(f) == "b'1.3.2.3'":
+					if str(f) == "b'1.3.3'":
 						clearScreen()
 						print("You're up to date!")
 						print("The system wont be updated.")
@@ -3191,7 +3191,7 @@ def rootTest():
 					print("Current Github Repo Version: " + str(f))
 					print("Checking if up-to-date...")
 					time.sleep(1)
-					if str(f) == "b'1.3.2.3'":
+					if str(f) == "b'1.3.3'":
 						clearScreen()
 						print("You're up to date!")
 						print("No need for an update")
@@ -3429,7 +3429,7 @@ def sysInfo():
 	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.2.3'":
+	if str(f) == "b'1.3.3'":
 		upDate = "Up-To-Date!"
 	else:
 		upDate = "Out-Of-Date!"
@@ -3477,7 +3477,7 @@ def devSysInfo():
 	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.2.3'":
+	if str(f) == "b'1.3.3'":
 		upDate = "Up-To-Date!"
 	else:
 		upDate = "Out-Of-Date!"

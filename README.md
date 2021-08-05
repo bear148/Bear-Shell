@@ -74,7 +74,7 @@ By flavors I mean making new flavors of Bear-Shell, like Ubuntu is a flavor of D
 ## Newest Updates
 <b>Disclaimer!</b> Patches will not be shown here! This area is for big releases only! The fourth digit is for patches, and those are pretty much always bug fixes, so they wont be put here.
 <br>
-In the most recent update, version 1.3.2.1, I added the calculator, import verification, and better command handling for the root testing. Root testing is accessable by typing in the password, 'testing' and then once in the framework, type 'test' then you can test the one line commands, that are being tested. (e.g. 'ls /home' 'cd /home')
+In the most recent update, version 1.3.3, I added the calculator, import verification, and better command handling for the root testing. Root testing is accessable by typing in the password, 'testing' and then once in the framework, type 'test' then you can test the one line commands, that are being tested. (e.g. 'ls /home' 'cd /home')
 
 - calculator: allows you to add, subtract, divide, and multiply two nums.
 - import verification: checks if the user has the correct libraries installed to run Bear-Shell
@@ -85,7 +85,7 @@ I wanted to add this feature because I thought about Bear-Shell's whole point, w
 <a name="new-patch"></a>
 
 ## Newest Patches
-<b>The newest patch is v1.3.2.3</b>
+<b>The newest patch is v1.3.3</b>
 <br>
 <p>The newest patch includes A LOT of things. Mostly just for debugging and some extra small things. In this patch, I added the frame to start on github branch changing, better import verficiation, a counter that counts missing imports, the ability to see what github branch you are using for your copy of the shell, the frame for the updater (allows user to update their ENTIRE bear-shell installation from the menu), and I fixed a bios bug.</p>
 
@@ -100,7 +100,7 @@ I wanted to add this feature because I thought about Bear-Shell's whole point, w
 
 ## Newest Changes
 This is just an area for what the most recent changes are, not updates or patches.
-In the most recent commit, I added vim support!! Now you can edit files using vim from the frame, I will soon add support to the main terminal. (The one accessable from the menu)
+In the most recent commit, I made less confusing version numbers. Previously, I was making the numbers have 4 digits, instead there should've only been 3. I figured this caused confusion, so I removed the 3rd number in the previous version numbers.
 
 <a name="old"></a>
 

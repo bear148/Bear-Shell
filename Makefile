@@ -1,6 +1,9 @@
 start:
 	python3 BearCMDos.py
 
+install:
+	echo
+
 uninstall:
 	rm -r BearCMDos.py
 	rm -r developerGuide.txt
