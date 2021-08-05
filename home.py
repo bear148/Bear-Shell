@@ -28,15 +28,23 @@ def writeVersionNum(ver):
 	with open('data/version.data', 'w') as f:
 		f.writelines(ver)
 
-def startupVer(vers):
-	if bear_shell == vers:
-		print("Shell up to date...")
+def startupVer():
+	import os
+	from dotenv import load_dotenv
+	from github import Github
+	load_dotenv()
+	token = os.environ.get("api")
+	g = Github(token)
+	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
+	v = repo.get_contents("ver.txt")
+	f = v.decoded_content
+	if str(f) == "b'1.3.2.3'":
+		print("Bear-Shell is up-to-date")
+		time.sleep(1)
 	else:
-		print("Your copy of Bear-Shell is not up-to-date!")
-		print("Please update your shell!")
-		print("")
-		print("This will close in 3 seconds...")
-		time.sleep(3)
+		print("Your Bear-Shell is out-of-date! Please consider updating!")
+		print("This prompt will close in 10 seconds.")
+		time.sleep(10)
 
 import sys, time
 try:
@@ -251,7 +259,7 @@ except ImportError:
 else:
 	print("Module, 'dotenv' found!")
 	time.sleep(0.5)
-	startupVer("1.3.2.3")
+	startupVer()
 
 import keyboard
 import psutil
@@ -3127,7 +3135,7 @@ def rootTest():
 					load_dotenv()
 					token = os.environ.get("api")
 					g = Github(token)
-					repo = g.get_repo("BizzyPythonBear/Bear-Shell")
+					repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 					print("Checking for updates...")
 					v = repo.get_contents("ver.txt")
 					f = v.decoded_content
@@ -3166,7 +3174,7 @@ def rootTest():
 					load_dotenv()
 					token = os.environ.get("api")
 					g = Github(token)
-					repo = g.get_repo("BizzyPythonBear/Bear-Shell")
+					repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 					print("Checking version...")
 					v = repo.get_contents("ver.txt")
 					f = v.decoded_content
@@ -3397,12 +3405,21 @@ def devCalculator():
 			print("That command wasn't found!")
 
 def sysInfo():
-
+	import os
 	testing = open('gitbranch.txt')
 	test = testing.read()
 	varss = open('data/version.data')
 	var = varss.read()
-	if var == '1.3.2.3':
+	from dotenv import load_dotenv
+	from github import Github
+	clearScreen()
+	load_dotenv()
+	token = os.environ.get("api")
+	g = Github(token)
+	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
+	v = repo.get_contents("ver.txt")
+	f = v.decoded_content
+	if str(f) == "b'1.3.2.3'":
 		upDate = "Up-To-Date!"
 	else:
 		upDate = "Out-Of-Date!"
@@ -3436,11 +3453,21 @@ Bear-Shell; Created by Michael S.
 			break
 
 def devSysInfo():
+	import os
 	testing = open('gitbranch.txt')
-	test = testing.read()	
+	test = testing.read()
 	varss = open('data/version.data')
 	var = varss.read()
-	if var == '1.3.2.3':
+	from dotenv import load_dotenv
+	from github import Github
+	clearScreen()
+	load_dotenv()
+	token = os.environ.get("api")
+	g = Github(token)
+	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
+	v = repo.get_contents("ver.txt")
+	f = v.decoded_content
+	if str(f) == "b'1.3.2.3'":
 		upDate = "Up-To-Date!"
 	else:
 		upDate = "Out-Of-Date!"
