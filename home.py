@@ -214,8 +214,11 @@ except ImportError:
 	while True:
 		s = input("The module, 'tkinter' was not found... Install? (y/n) ")
 		if s == 'y':
-			system('pip3 install tk')
-			break
+			if name == 'nt':
+				system('pip3 install tk')
+				break
+			else:
+				system('sudo apt install python3-tk')
 		elif s == 'n':
 			print("Continuing startup...")
 			missingImport += 1
