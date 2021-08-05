@@ -261,17 +261,6 @@ else:
 	time.sleep(0.5)
 	startupVer()
 
-import keyboard
-import psutil
-import tkinter
-import utils.calculatorBase as cb
-import ctypes
-import sys
-import os
-import time
-import socket
-import dotenv
-
 def spinning_cursor():
 	while True:
 		for cursor in '|/-\\':
