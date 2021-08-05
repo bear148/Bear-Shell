@@ -1,0 +1,3 @@
+during the login screen, if you put '559907' as the password that will open dev mode
+if you put '559908' it will take you right to the root terminal
+if you put 'testing' it will take you to frame
