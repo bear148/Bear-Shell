@@ -2976,7 +2976,7 @@ def testingTerm():
 def rootTest():
 	clearScreen()
 	print("Bear-Shell Frame Work (Testing) (root)")
-	print("Ver 13022a")
+	print("Ver 13023a")
 	cwd = os.getcwd()
 		
 	def helpCom():
@@ -2990,6 +2990,7 @@ def rootTest():
 		cat:     Allows you to view the contents of a file
 		usage:   CPU and RAM usage
 		exit:    Quits shell
+		vim:     Starts the "Vim" editor
 
 		Flags:
 		  -y: only works for the 'restart' command. Usage: 'restart -y'; automatically answers 'y' to prompt
@@ -3000,7 +3001,6 @@ def rootTest():
 		Exit Flags:
 		  -admin:    Allows user to exit to the admin menu
 		  -user:     Allows user to exit to the regular user menu
-
 
 		More commands to come with future updates:
 		""")
@@ -3068,6 +3068,9 @@ def rootTest():
 				else:
 					_ = system("ls")
 
+			elif com == 'vim':
+				system('"C:/Program Files (x86)/Vim/vim82/vim.exe"')
+
 			else:
 				print("Not a command!")
 
@@ -3103,6 +3106,13 @@ def rootTest():
 				if flag == '-y':
 					reset()
 					break
+
+			elif com1 == 'vim':
+				file = str(bear_split[1])
+				if name == 'nt':
+					_ = system('"C:/Program Files (x86)/Vim/vim82/vim.exe" ' + file)
+				else:
+					_ = system('vim ' + file)
 
 			elif com1 == 'exit':
 				flag2 = str(bear_split[1])

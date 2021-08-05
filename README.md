@@ -53,6 +53,7 @@ To use Bear-Shell, you'll need to install:
 - Curses (Go to [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#curses) to install it.)
 -	[This](https://stackoverflow.com/questions/32417379/what-is-needed-for-curses-in-python-3-4-on-windows7) goes into more depth on how to install it.
 - 	If you are on linux, curses is included with python and wont need to be installed.
+- [Vim 8.2](https://www.vim.org/download.php)
 
 <a name="upcome"></a>
 
@@ -93,13 +94,13 @@ I wanted to add this feature because I thought about Bear-Shell's whole point, w
 ## Newest Framework Updates
 <b>This are the new <u>Framework</u> updates.</b>
 <b>The framework can be accessed by typing 'testing' in for the password in the login page. Then, type the command 'test' to be taken to the root test terminal</b>
-<p>The newest framework patch/update is <b>13022a.</b> This update adds some flags and commands. You can view them by typing the help command in the <u>root</u> testing terminal.</p>
+<p>The newest framework patch/update is <b>13023a.</b> This update adds vim support for windows and linux.</p>
 
 <a name="new-change"></a>
 
 ## Newest Changes
 This is just an area for what the most recent changes are, not updates or patches.
-In the most recent commit, I fixed the system info menu, as it was not actually checking if it was up-to-date since now I was reading a file from a repository instead of just a file, I fixed version checking on startup, and lastly I made the update menu and commands read from the Bear-Shell-Unstable repository.
+In the most recent commit, I added vim support!! Now you can edit files using vim from the frame, I will soon add support to the main terminal. (The one accessable from the menu)
 
 <a name="old"></a>
 
