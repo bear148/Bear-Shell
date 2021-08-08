@@ -40,7 +40,7 @@ def startupVer():
 	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.3'":
+	if str(f) == "b'1.3.4'":
 		print("Bear-Shell is up-to-date")
 		time.sleep(1)
 	else:
@@ -1136,7 +1136,7 @@ def homePage():
 		print("Current Github Repo Version: " + str(f))
 		print("Checking if up-to-date...")
 		time.sleep(1)
-		if str(f) == "b'1.3.3'":
+		if str(f) == "b'1.3.4'":
 			clearScreen()
 			print("You're up to date!")
 			time.sleep(1)
@@ -1454,7 +1454,7 @@ def devPage():
 		print("Current Github Repo Version: " + str(f))
 		print("Checking if up-to-date...")
 		time.sleep(1)
-		if str(f) == "b'1.3.3'":
+		if str(f) == "b'1.3.4'":
 			clearScreen()
 			print("You're up to date!")
 			time.sleep(1)
@@ -3013,7 +3013,7 @@ def rootTest():
 					print("Current Github Repo Version: " + str(f))
 					print("Checking if up-to-date...")
 					time.sleep(1)
-					if str(f) == "b'1.3.3'":
+					if str(f) == "b'1.3.4'":
 						clearScreen()
 						print("You're up to date!")
 						print("The system wont be updated.")
@@ -3052,7 +3052,7 @@ def rootTest():
 					print("Current Github Repo Version: " + str(f))
 					print("Checking if up-to-date...")
 					time.sleep(1)
-					if str(f) == "b'1.3.3'":
+					if str(f) == "b'1.3.4'":
 						clearScreen()
 						print("You're up to date!")
 						print("No need for an update")
@@ -3290,7 +3290,7 @@ def sysInfo():
 	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.3'":
+	if str(f) == "b'1.3.4'":
 		upDate = "Up-To-Date!"
 	else:
 		upDate = "Out-Of-Date!"
@@ -3338,7 +3338,7 @@ def devSysInfo():
 	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.3'":
+	if str(f) == "b'1.3.4'":
 		upDate = "Up-To-Date!"
 	else:
 		upDate = "Out-Of-Date!"
