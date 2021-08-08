@@ -105,6 +105,7 @@ In the most recent commit, I made less confusing version numbers. Previously, I 
 <a name="old"></a>
 
 ## Older Updates
+- Ver 1.3.3 (Patch)
 - Ver 1.3.2.2 (Patch)
 - Ver 1.3.2.1
 - Ver 1.3.1.1
