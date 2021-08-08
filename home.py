@@ -3,10 +3,12 @@ from sys import *
 from os import name, system
 
 missingImport = 0
-bear_shell = "1.3.3"
+bear_shell = "v1.3.4"
 bear_shell_testing = ""
 testing = open('gitbranch.txt')
 test = testing.read()
+t = "1.3.4"
+fooa = 0.5
 
 if test == 'true':
 	bear_shell_testing = "(testing)"
@@ -65,7 +67,7 @@ except ImportError:
 else:
 	clearScreen()
 	print("Module, 'PyGitHub' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import time
@@ -83,7 +85,7 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'time' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import os
@@ -101,7 +103,7 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'os' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import socket
@@ -119,7 +121,7 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'socket' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import sys
@@ -137,7 +139,7 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'sys' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import utils.calculatorBase as cb
@@ -153,7 +155,8 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'calculatorBase' found!")
-	time.sleep(0.5)
+	fooa -= 0.25
+	time.sleep(fooa)
 try:
 	import ctypes
 except ImportError:
@@ -170,7 +173,7 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'ctypes' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import keyboard
@@ -188,7 +191,7 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'keyboard' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import psutil
@@ -206,7 +209,7 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'psutil' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import tkinter
@@ -227,7 +230,7 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'tkinter' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
 
 try:
 	import utils.verifyImports
@@ -243,7 +246,8 @@ except ImportError:
 			print("Not applicable!")
 else:
 	print("Module, 'verifyImports' found!")
-	time.sleep(0.5)
+	fooa -= 0.10
+	time.sleep(fooa)
 
 try:
 	from dotenv import load_dotenv
@@ -261,7 +265,23 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'dotenv' found!")
-	time.sleep(0.5)
+	time.sleep(fooa)
+
+try:
+	import utils.blueScreen as blue
+except ImportError:
+	while True:
+		s = input("The module, 'blueScreen' was not found... This could be caused by an install error. Please restart the program and install a new Bear-Shell version. (hit y) ")
+		if s == 'y':
+			print("Quitting the shell...")
+			time.sleep(1)
+			clearScreen()
+			sys.exit()
+		else:
+			print("Not applicable!")
+else:
+	print("Module, 'blueScreen' found!")
+	time.sleep(fooa)
 	startupVer()
 
 def spinning_cursor():
@@ -359,13 +379,13 @@ def setupPage():
 	clearScreen()
 
 	if test == 'true':
-		print("""
-	Bear Shell v1.3.3 (testing)
+		print(f"""
+	Bear Shell {bear_shell} (testing)
 	Bear Shell Registration
 		""")
 	else:
-		print("""
-	Bear Shell v1.3.3 (stable)
+		print(f"""
+	Bear Shell {bear_shell} (stable)
 	Bear Shell Registration
 		""")
 
@@ -409,13 +429,13 @@ def loginPage():
 	test = testing.read()
 
 	if test == 'true':
-		print("""
-	Bear Shell v1.3.3 (testing)
+		print(f"""
+	Bear Shell {bear_shell} (testing)
 	Bear Shell Login
 		""")
 	else:
-		print("""
-	Bear Shell v1.3.3 (stable)
+		print(f"""
+	Bear Shell {bear_shell} (stable)
 	Bear Shell Login
 		""")
 
@@ -542,7 +562,7 @@ def terminalMain():
 	clearScreen()
 	cwd = os.getcwd()
 	print("Welcome to the Bear-Shell Terminal")
-	print("Ver 1.3.3 " + bear_shell_testing)
+	print(f"Ver {bear_shell} " + bear_shell_testing)
 	def helpCom():
 		clearScreen()
 		print("""
@@ -566,24 +586,19 @@ def terminalMain():
 
 	while True:
 		bruhVariable = input(f"{bcolors.OKGREEN}Bear-Shell: " + f"{bcolors.OKBLUE}"+ cwd + " >>"f"{bcolors.OKGREEN} ")
+		bruhVariable2 = bruhVariable.lower()
 
-		if bruhVariable == "Help":
-			clearScreen()
-			helpCom()
-		elif bruhVariable == "help":
+		if bruhVariable2 == "help":
 			clearScreen()
 			helpCom()
 
-		elif bruhVariable == "Exit":
+		elif bruhVariable2 == "exit":
 			clearScreen()
 			H.homePage()
 			break
-		elif bruhVariable == "exit":
-			clearScreen()
-			H.homePage()
 			break
 
-		elif bruhVariable == "UserInfo":
+		elif bruhVariable2 == "userinfo":
 			clearScreen()
 			b_login = input(str("Please Enter The Password To " + l_n + " To view this data: "))
 			if b_login == l_p:
@@ -592,16 +607,7 @@ def terminalMain():
 			else:
 				print("Wrong password")
 
-		elif bruhVariable == "userinfo":
-			clearScreen()
-			b_login = input(str("Please Enter The Password To " + l_n + " To view this data: "))
-			if b_login == l_p:
-				print("Username: " + l_n)
-				print("Password: " + l_p)
-			else:
-				print("Wrong password")
-
-		elif bruhVariable == "root":
+		elif bruhVariable2 == "root":
 			login = input("To access the root terminal, please enter your password: ")
 			if login == l_p:
 				dec = input(f"{bcolors.FAIL}Are you sure you want to enter the root terminal?{bcolors.HEADER} ")
@@ -618,43 +624,17 @@ def terminalMain():
 					time.sleep(0.5)
 					terminalMain()
 
-		elif bruhVariable == "Root":
-			login = input("To access the root terminal, please enter your password: ")
-
-			if login == l_p:
-				dec = input("Are you sure you want to enter the root terminal? ")
-				if dec == 'y':
-					rootTerm()
-				elif dec == 'Y':
-					rootTerm()
-				elif dec == 'n':
-					print("Returning to regular terminal...")
-					time.sleep(0.5)
-					terminalMain()
-					break
-				elif dec == 'N':
-					print("Returning to regular terminal...")
-					time.sleep(0.5)
-					terminalMain()
-					break
-
-			elif login != l_p:
-				print("Wrong password!")
-
-		elif bruhVariable == "clear":
+		elif bruhVariable2 == "clear":
 			clearScreen()
 
-		elif bruhVariable == "Clear":
-			clearScreen()
-
-		elif bruhVariable == "python3":
+		elif bruhVariable2 == "python3":
 			m = input("What file would you like to run? ")
 			if m.endswith('.py'):
 				os.system(f'python3 {m}')
 			else:
 				print(m + " is not a py file.")
 
-		elif bruhVariable == "ls":
+		elif bruhVariable2 == "ls":
 			foo = input("What directory would you like to look through? ")
 			isdir = os.path.isdir(foo)
 
@@ -677,23 +657,15 @@ def terminalMain():
 			else:
 				errorHandle("That directory isn't valid!", ErrorCodes.Err6)
 
-		elif bruhVariable == "pwd":
+		elif bruhVariable2 == "pwd":
 			print(cwd)
 
-		elif bruhVariable == "restart":
+		elif bruhVariable2 == "restart":
 			print("Restarting...")
 			time.sleep(1)
 			os.system("python3 BearCMDos.py")
 
-		elif bruhVariable == "Restart":
-			print("Restarting...")
-			time.sleep(1)
-			os.system("python3 BearCMDos.py")
-
-		elif bruhVariable == "Pwd":
-			print(cwd)
-
-		elif bruhVariable == "cd":
+		elif bruhVariable2 == "cd":
 			fi = input("Where would you like to go? ")
 			workdir = os.path.isdir(fi)
 			if workdir:
@@ -712,35 +684,13 @@ def terminalMain():
 					else:
 						print("You don't have permission to access that folder! ")
 
-		elif bruhVariable == "Cd":
-			fi = input("Where would you like to go? ")
-			workdir = os.path.isdir(fi)
-			if workdir:
-				perms = os.access(fi, os.R_OK)
-				if name == 'nt':
-					if perms:
-						system('cd ' + fi)
-						cwd = fi
-					else:
-						print("You don't have permission to access that folder!")
-				else:
-					perms = os.access(fi, os.R_OK)
-					if perms:
-						system('cd ' + fi)
-						cwd = fi
-					else:
-						print("You don't have permission to access that folder! ")
-
-			else:
-				errorHandle("Directory doesn't exist!", ErrorCodes.Err6)
-
-		elif bruhVariable == "neofetch":
+		elif bruhVariable2 == "neofetch":
 			if name == 'nt':
 				print("This command isn't available on your OS!")
 			else:
 				_ = system('neofetch')
 
-		elif bruhVariable == "apt-get":
+		elif bruhVariable2 == "apt-get":
 			if name == 'nt':
 				print("This command isn't available on your OS!")
 			else:
@@ -777,7 +727,7 @@ def terminalMain():
 					else:
 						print("Not an option!")
 
-		elif bruhVariable == 'pip':
+		elif bruhVariable2 == 'pip':
 			while True:
 				daisd = input("What pip package would you like to install? ")
 				if daisd == 'exit':
@@ -785,7 +735,7 @@ def terminalMain():
 				else:
 					os.system('pip3 install ' + daisd)
 			
-		elif bruhVariable == 'git':
+		elif bruhVariable2 == 'git':
 			while True:
 				bing = input("What git command would you like to run? (git init, git add, git commit, git branch, git remote add origin, or git push ('exit' to leave)) ")
 				if bing == 'git init':
@@ -815,7 +765,7 @@ def terminalMain():
 					errorHandle("Not a valid command! ", ErrorCodes.ErrCode1)
 					print(f"{bcolors.WARNING}")
 
-		elif bruhVariable == 'cat':
+		elif bruhVariable2 == 'cat':
 			faf = input("What file would you like to look into? ")
 			if name == 'nt':
 				
@@ -875,15 +825,16 @@ def homePage():
 	l_n = login_name.read()
 	testing = open('gitbranch.txt')
 	test = testing.read()
+	ar = 0
 	if test == 'true':
 		print(f"""{bcolors.OKBLUE}
-	Bear Shell v1.3.3 (testing)
+	Bear Shell {bear_shell} (testing)
 	Home page
 
 		""")
 	else:
 		print(f"""{bcolors.OKBLUE}
-	Bear Shell v1.3.3 (stable)
+	Bear Shell {bear_shell} (stable)
 	Home page
 
 		""")
@@ -1056,6 +1007,8 @@ def homePage():
 	elif select == '7':
 		clearDumbScreen()
 		print(f"""
+{bcolors.OKBLUE}Patch 1.3.4:
+	{bcolors.OKGREEN}[+] Better command handling for developer, root, and regular terminal.
 {bcolors.OKBLUE}Patch 1.3.3:
 	{bcolors.OKGREEN}[+] Added Frame to start Github Branch Changing in BIOS
 	{bcolors.OKGREEN}[+] Better Import verifier
@@ -1203,7 +1156,6 @@ def homePage():
 				else:
 					print("That isn't a command!")
 
-
 	else:
 		error()
 
@@ -1216,13 +1168,13 @@ def devPage():
 	textColor = bcolors.OKGREEN
 	if test == 'true':
 		print(f"""{bcolors.OKBLUE}
-	Bear Shell v1.3.3 (testing)
+	Bear Shell {bear_shell} (testing)
 	Home page (DEVELOPER MODE: True)
 
 		""")
 	else:
 		print(f"""{bcolors.OKBLUE}
-	Bear Shell v1.3.3 (stable)
+	Bear Shell {bear_shell} (stable)
 	Home page (DEVELOPER MODE: True)
 
 		""")
@@ -1649,7 +1601,7 @@ def devTermMain():
 	clearScreen()
 	cwd = os.getcwd()
 	print("Welcome to the Bear-Shell Terminal")
-	print("Ver 1.3.3")
+	print(f"Ver {bear_shell}")
 	print("(DEVELOPER MODE: ACTIVATED) (ROOT: TRUE)")
 	def helpCom():
 		clearScreen()
@@ -1672,56 +1624,38 @@ def devTermMain():
 
 	while True:
 		bruhVariable = input(f"{bcolors.OKGREEN}Bear-Shell: " + f"{bcolors.OKBLUE}"+ cwd + " >>"f"{bcolors.OKGREEN} ")
+		bruhVariable2 = bruhVariable.lower()
 
-		pyfile = bruhVariable.endswith(".py")
-
-		m = str(pyfile)
-
-		if bruhVariable == "Help":
-			clearScreen()
-			helpCom()
-		elif bruhVariable == "help":
+		if bruhVariable2 == "help":
 			clearScreen()
 			helpCom()
 
-		elif bruhVariable == "Exit":
+		elif bruhVariable2 == "exit":
 			clearScreen()
-			devPage()
+			H.homePage()
 			break
-		elif bruhVariable == "exit":
-			clearScreen()
-			devPage()
 			break
 
-		elif bruhVariable == "UserInfo":
+		elif bruhVariable2 == "userinfo":
 			clearScreen()
-			print("Username: " + l_n)
-			print("Password: " + l_p)
+			b_login = input(str("Please Enter The Password To " + l_n + " To view this data: "))
+			if b_login == l_p:
+				print("Username: " + l_n)
+				print("Password: " + l_p)
+			else:
+				print("Wrong password")
 
-		elif bruhVariable == "userinfo":
-			clearScreen()
-			print("Username: " + l_n)
-			print("Password: " + l_p)
-
-		elif bruhVariable == "clear":
+		elif bruhVariable2 == "clear":
 			clearScreen()
 
-		elif bruhVariable == "Clear":
-			clearScreen()
-		
-		elif bruhVariable == "python3":
+		elif bruhVariable2 == "python3":
 			m = input("What file would you like to run? ")
 			if m.endswith('.py'):
 				os.system(f'python3 {m}')
 			else:
 				print(m + " is not a py file.")
 
-		elif bruhVariable == "restart":
-			print("Restarting...")
-			time.sleep(1)
-			exec(open('BearCMDos.py').read())
-
-		elif bruhVariable == "ls":
+		elif bruhVariable2 == "ls":
 			foo = input("What directory would you like to look through? ")
 			isdir = os.path.isdir(foo)
 
@@ -1744,18 +1678,15 @@ def devTermMain():
 			else:
 				errorHandle("That directory isn't valid!", ErrorCodes.Err6)
 
-		elif bruhVariable == "pwd":
+		elif bruhVariable2 == "pwd":
 			print(cwd)
 
-		elif bruhVariable == "Restart":
+		elif bruhVariable2 == "restart":
 			print("Restarting...")
 			time.sleep(1)
-			exec(open('BearCMDos.py').read())
+			os.system("python3 BearCMDos.py")
 
-		elif bruhVariable == "Pwd":
-			print(cwd)
-
-		elif bruhVariable == "cd":
+		elif bruhVariable2 == "cd":
 			fi = input("Where would you like to go? ")
 			workdir = os.path.isdir(fi)
 			if workdir:
@@ -1774,37 +1705,13 @@ def devTermMain():
 					else:
 						print("You don't have permission to access that folder! ")
 
-			else:
-				print("Dir doesn't exist")
-
-		elif bruhVariable == "Cd":
-			fi = input("Where would you like to go? ")
-			workdir = os.path.isdir(fi)
-			if workdir:
-				perms = os.access(fi, os.R_OK)
-				if name == 'nt':
-					if perms:
-						system('cd ' + fi)
-						cwd = fi
-					else:
-						print("You don't have permission to access that folder!")
-				else:
-					perms = os.access(fi, os.R_OK)
-					if perms:
-						system('cd ' + fi)
-						cwd = fi
-					else:
-						print("You don't have permission to access that folder! ")
-			else:
-				print("Dir doesn't exist")
-
-		elif bruhVariable == "neofetch":
+		elif bruhVariable2 == "neofetch":
 			if name == 'nt':
 				print("This command isn't available on your OS!")
 			else:
 				_ = system('neofetch')
 
-		elif bruhVariable == "apt-get":
+		elif bruhVariable2 == "apt-get":
 			if name == 'nt':
 				print("This command isn't available on your OS!")
 			else:
@@ -1841,19 +1748,15 @@ def devTermMain():
 					else:
 						print("Not an option!")
 
-		elif bruhVariable == 'cat':
-			faf = input("What file would you like to look into? ")
-			if name == 'nt':
-				
-				_ = system('type ' + faf)
-				print("\n")
+		elif bruhVariable2 == 'pip':
+			while True:
+				daisd = input("What pip package would you like to install? ")
+				if daisd == 'exit':
+					break
+				else:
+					os.system('pip3 install ' + daisd)
 			
-			else:
-				print(f"{bcolors.WARNING}")
-				_ = system('cat ' + faf)
-				print("\n")
-
-		elif bruhVariable == 'git':
+		elif bruhVariable2 == 'git':
 			while True:
 				bing = input("What git command would you like to run? (git init, git add, git commit, git branch, git remote add origin, or git push ('exit' to leave)) ")
 				if bing == 'git init':
@@ -1883,16 +1786,21 @@ def devTermMain():
 					errorHandle("Not a valid command! ", ErrorCodes.ErrCode1)
 					print(f"{bcolors.WARNING}")
 
-		elif bruhVariable == 'pip':
-			while True:
-				daisd = input("What pip package would you like to install? ")
-				if daisd == 'exit':
-					break
-				else:
-					os.system('pip3 install ' + daisd)
+		elif bruhVariable2 == 'cat':
+			faf = input("What file would you like to look into? ")
+			if name == 'nt':
+				
+				_ = system('type ' + faf)
+				print("\n")
+			
+			else:
+				print(f"{bcolors.WARNING}")
+				_ = system('cat ' + faf)
+				print("\n")
 
 		else:
-			print("The command, " "" + bruhVariable + "" " wasn't found!")
+			print("The command, " "'" + bruhVariable + "'" " wasn't found!")
+
 import os
 import home as H
 
@@ -1916,7 +1824,7 @@ def rootTerm():
 	clearScreen()
 	cwd = os.getcwd()
 	print(f"{bcolors.OKCYAN}Welcome to the Bear-Shell Terminal")
-	print("Ver 1.3.3")
+	print(f"Ver {bear_shell}")
 	print("You're in the ROOT terminal, enter command 'exit' to return to menu.")
 	def helpCom():
 		clearScreen()
@@ -1938,223 +1846,184 @@ def rootTerm():
 		""")
 
 	while True:
-		bruhVariable = input(f"{bcolors.OKGREEN}(ROOT) Bear-Shell: " + f"{bcolors.OKBLUE}"+ cwd + " >>"f"{bcolors.OKGREEN} ")
-		print(f"{bcolors.OKCYAN}")
-		if bruhVariable == "Help":
-			clearScreen()
-			helpCom()
-		elif bruhVariable == "help":
-			clearScreen()
-			helpCom()
+			while True:
+				bruhVariable = input(f"{bcolors.OKGREEN}Bear-Shell: " + f"{bcolors.OKBLUE}"+ cwd + " >>"f"{bcolors.OKGREEN} ")
+				bruhVariable2 = bruhVariable.lower()
 
-		elif bruhVariable == "Exit":
-			clearScreen()
-			H.homePage()
-			break
-		elif bruhVariable == "exit":
-			clearScreen()
-			H.homePage()
-			break
+				if bruhVariable2 == "help":
+					clearScreen()
+					helpCom()
 
-		elif bruhVariable == "UserInfo":
-			clearScreen()
-			print("Username: " + l_n)
-			print("Password: " + l_p)
+				elif bruhVariable2 == "exit":
+					clearScreen()
+					H.homePage()
+					break
+					break
 
-		elif bruhVariable == "userinfo":
-			clearScreen()
-			print("Username: " + l_n)
-			print("Password: " + l_p)
-
-		elif bruhVariable == "python3":
-			m = input("What file would you like to run? ")
-			if m.endswith('.py'):
-				os.system(f'python3 {m}')
-			else:
-				print(m + " is not a py file.")
-
-		elif bruhVariable == "ls":
-			foo = input("What directory would you like to look through? ")
-			print(f"{bcolors.OKGREEN}")
-			isdir = os.path.isdir(foo)
-			if isdir:
-				if name == 'nt':
-					print(f"{bcolors.WARNING}")
-					_ = system('dir ' + foo)
-				else:
-					print(f"{bcolors.WARNING}")
-					_ = system('ls ' + foo)
-			else:
-				errorHandle("That directory isn't valid!", ErrorCodes.Err6)
-
-		elif bruhVariable == "pwd":
-			print(cwd)
-
-		elif bruhVariable == "restart":
-			print("Restarting...")
-			time.sleep(1)
-			exec(open('BearCMDos.py').read())
-
-		elif bruhVariable == "Restart":
-			print("Restarting...")
-			time.sleep(1)
-			exec(open('BearCMDos.py').read())
-
-		elif bruhVariable == "Pwd":
-			print(cwd)
-				
-		elif bruhVariable == "Ls":
-			foo = input("What directory would you like to look through? ")
-			isdir = os.path.isdir(foo)
-			if isdir:
-				if name == 'nt':
-					print(f"{bcolors.WARNING}")
-					_ = system('dir ' + foo)
-				else:
-					print(f"{bcolors.WARNING}")
-					_ = system('ls ' + foo)
-			else:
-				errorHandle("That directory isn't valid!", ErrorCodes.Err6)
-
-		elif bruhVariable == "cd":
-			fi = input("Where would you like to go? ")
-			workdir = os.path.isdir(fi)
-			if workdir:
-				perms = os.access(fi, os.R_OK)
-				if name == 'nt':
-					if perms:
-						system('cd ' + fi)
-						cwd = fi
+				elif bruhVariable2 == "userinfo":
+					clearScreen()
+					b_login = input(str("Please Enter The Password To " + l_n + " To view this data: "))
+					if b_login == l_p:
+						print("Username: " + l_n)
+						print("Password: " + l_p)
 					else:
-						print("You don't have permission to access that folder!")
-				else:
-					perms = os.access(fi, os.R_OK)
-					if perms:
-						system('cd ' + fi)
-						cwd = fi
+						print("Wrong password")
+
+				elif bruhVariable2 == "clear":
+					clearScreen()
+
+				elif bruhVariable2 == "python3":
+					m = input("What file would you like to run? ")
+					if m.endswith('.py'):
+						os.system(f'python3 {m}')
 					else:
-						print("You don't have permission to access that folder! ")
+						print(m + " is not a py file.")
 
-		elif bruhVariable == "Cd":
-			fi = input("Where would you like to go? ")
-			workdir = os.path.isdir(fi)
-			if workdir:
-				perms = os.access(fi, os.R_OK)
-				if name == 'nt':
-					if perms:
-						system('cd ' + fi)
-						cwd = fi
-					else:
-						print("You don't have permission to access that folder!")
-				else:
-					perms = os.access(fi, os.R_OK)
-					if perms:
-						system('cd ' + fi)
-						cwd = fi
-					else:
-						print("You don't have permission to access that folder! ")
+				elif bruhVariable2 == "ls":
+					foo = input("What directory would you like to look through? ")
+					isdir = os.path.isdir(foo)
 
-		elif bruhVariable == "neofetch":
-			if name == 'nt':
-				print("This command isn't available on your OS!")
-			else:
-				_ = system('neofetch')
-
-		elif bruhVariable == "apt-get":
-			if name == 'nt':
-				print("This command isn't available on your OS!")
-			else:
-				while True:
-					food = input("Would you like to run apt-get update, install, remove, or upgrade? ")
-					if food == "update":
-						print(f"{bcolors.WARNING}")
-						system('sudo apt-get update')
-						break
-
-					elif food == "install":
-						ding = input("What package do you want to install? ")
-						print(f"{bcolors.WARNING}")
-						system('sudo apt-get install ' + ding)
-						break
-					
-					elif food == "remove":
-						fing = input("What package would you like to remove? ")
-						print(f"{bcolors.WARNING}")
-						system('sudo apt-get remove ' + fing)
-						break
-
-					elif food == "upgrade":
-						bing = input("Are you sure you want to upgrade? ")
-						if bing == 'y':
+					if isdir:
+						if name == 'nt':
 							print(f"{bcolors.WARNING}")
-							system('sudo apt-get dist-upgrade')
-
+							_ = system('dir ' + foo)
 						else:
-							print("Cancelling...")
+							print(f"{bcolors.WARNING}")
+							_ = system('ls ' + foo)
+
+					elif foo == 'ls':
+						if name == 'nt':
+							print(f"{bcolors.WARNING}")
+							_ = system('dir ' + cwd)
+						else:
+							print(f"{bcolors.WARNING}")
+							_ = system('ls ' + cwd)
+
+					else:
+						errorHandle("That directory isn't valid!", ErrorCodes.Err6)
+
+				elif bruhVariable2 == "pwd":
+					print(cwd)
+
+				elif bruhVariable2 == "restart":
+					print("Restarting...")
+					time.sleep(1)
+					os.system("python3 BearCMDos.py")
+
+				elif bruhVariable2 == "cd":
+					fi = input("Where would you like to go? ")
+					workdir = os.path.isdir(fi)
+					if workdir:
+						perms = os.access(fi, os.R_OK)
+						if name == 'nt':
+							if perms:
+								system('cd ' + fi)
+								cwd = fi
+							else:
+								print("You don't have permission to access that folder!")
+						else:
+							perms = os.access(fi, os.R_OK)
+							if perms:
+								system('cd ' + fi)
+								cwd = fi
+							else:
+								print("You don't have permission to access that folder! ")
+
+				elif bruhVariable2 == "neofetch":
+					if name == 'nt':
+						print("This command isn't available on your OS!")
+					else:
+						_ = system('neofetch')
+
+				elif bruhVariable2 == "apt-get":
+					if name == 'nt':
+						print("This command isn't available on your OS!")
+					else:
+						while True:
+							food = input("Would you like to run apt-get update, install, remove, or upgrade? ")
+							if food == "update":
+								print(f"{bcolors.WARNING}")
+								system('sudo apt-get update')
+								break
+
+							elif food == "install":
+								ding = input("What package do you want to install? ")
+								print(f"{bcolors.WARNING}")
+								system('sudo apt-get install ' + ding)
+								break
+							
+							elif food == "remove":
+								fing = input("What package would you like to remove? ")
+								print(f"{bcolors.WARNING}")
+								system('sudo apt-get remove ' + fing)
+								break
+
+							elif food == "upgrade":
+								bing = input("Are you sure you want to upgrade? ")
+								if bing == 'y':
+									print(f"{bcolors.WARNING}")
+									system('sudo apt-get dist-upgrade')
+
+								else:
+									print("Cancelling...")
+									time.sleep(1)
+									break
+							
+							else:
+								print("Not an option!")
+
+				elif bruhVariable2 == 'pip':
+					while True:
+						daisd = input("What pip package would you like to install? ")
+						if daisd == 'exit':
+							break
+						else:
+							os.system('pip3 install ' + daisd)
+					
+				elif bruhVariable2 == 'git':
+					while True:
+						bing = input("What git command would you like to run? (git init, git add, git commit, git branch, git remote add origin, or git push ('exit' to leave)) ")
+						if bing == 'git init':
+							system('git init')
+						elif bing == 'git add':
+							jaf = input("What files would you like to add? (* for all): ")
+							system('git add ' + jaf)
+						elif bing == 'git commit':
+							fjd = input("What would you like the commit message to be? ")
+							fling = f'"{fjd}"'
+							system('git commit -m ' + fling)
+						elif bing == 'git branch':
+							sad = input("What branch do you want to use? ")
+							system('git branch -M '+ sad)
+						elif bing == 'git remote add origin':
+							bva = input("What remote origin thing or whatever do you want to add? ")
+							system('git remote add origin ' + bva)
+						elif bing == 'git push':
+							fja = input("What branch do you want to push too? ")
+							system('git push -u ' + fja)
+						elif bing == 'exit':
+							print("Leaving git...")
 							time.sleep(1)
 							break
+
+						else:
+							errorHandle("Not a valid command! ", ErrorCodes.ErrCode1)
+							print(f"{bcolors.WARNING}")
+
+				elif bruhVariable2 == 'cat':
+					faf = input("What file would you like to look into? ")
+					if name == 'nt':
+						
+						_ = system('type ' + faf)
+						print("\n")
 					
 					else:
-						print("Not an option!")
-
-		elif bruhVariable == 'cat':
-			faf = input("What file would you like to look into? ")
-			if name == 'nt':
-				
-				_ = system('type ' + faf)
-				print("\n")
-			
-			else:
-				print(f"{bcolors.WARNING}")
-				_ = system('cat ' + faf)
-				print("\n")
-
-		elif bruhVariable == 'git':
-			while True:
-				bing = input("What git command would you like to run? (git init, git add, git commit, git branch, git remote add origin, or git push ('exit' to leave)) ")
-				if bing == 'git init':
-					system('git init')
-					break
-				elif bing == 'git add':
-					jaf = input("What files would you like to add? (* for all): ")
-					system('git add ' + jaf)
-					break
-				elif bing == 'git commit':
-					fjd = input("What would you like the commit message to be? ")
-					fling = f'"{fjd}"'
-					system('git commit -m ' + fling)
-					break
-				elif bing == 'git branch':
-					sad = input("What branch do you want to use? ")
-					system('git branch -M '+ sad)
-					break
-				elif bing == 'git remote add origin':
-					bva = input("What remote origin thing or whatever do you want to add? ")
-					system('git remote add origin ' + bva)
-					break
-				elif bing == 'git push':
-					fja = input("What branch do you want to push too? ")
-					system('git push -u ' + fja)
-					break
-				elif bing == 'exit':
-					print("Leaving git...")
-					time.sleep(1)
-					break
+						print(f"{bcolors.WARNING}")
+						_ = system('cat ' + faf)
+						print("\n")
 
 				else:
-					errorHandle("Not a valid command! ", ErrorCodes.ErrCode1)
-					print(f"{bcolors.WARNING}")
-
-		elif bruhVariable == 'pip':
-			while True:
-				daisd = input("What pip package would you like to install? ")
-				if daisd == 'exit':
-					break
-				else:
-					os.system('pip3 install ' + daisd)
-
-		else:
-			print("The command, " "" + bruhVariable + "" " wasn't found!")
+					print("The command, " "'" + bruhVariable + "'" " wasn't found!")
 
 # Importing Required libraries & Modules
 from tkinter import *
@@ -3510,7 +3379,7 @@ Bear-Shell; Created by Michael S.
 
 # When this file is ran, clear the screen
 clearScreen()
-writeVersionNum(bear_shell)
+writeVersionNum(t)
 makeTest()
 #  To-Do
 # --------------------

@@ -85,9 +85,9 @@ I wanted to add this feature because I thought about Bear-Shell's whole point, w
 <a name="new-patch"></a>
 
 ## Newest Patches
-<b>The newest patch is v1.3.3</b>
+<b>The newest patch is v1.3.4</b>
 <br>
-<p>The newest patch includes A LOT of things. Mostly just for debugging and some extra small things. In this patch, I added the frame to start on github branch changing, better import verficiation, a counter that counts missing imports, the ability to see what github branch you are using for your copy of the shell, the frame for the updater (allows user to update their ENTIRE bear-shell installation from the menu), and I fixed a bios bug.</p>
+<p>The newest patch includes better terminal command handling for the dev terminal, root terminal, and regular terminal. Hoping to drop system() soon and begin executing files directly.</p>
 
 <a name="new-frame"></a>
 
