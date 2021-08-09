@@ -3,22 +3,9 @@ from sys import *
 from os import name, system
 
 missingImport = 0
-bear_shell = "v1.3.4"
-bear_shell_testing = ""
-testing = open('gitbranch.txt')
-test = testing.read()
-t = "1.3.4"
+bear_shell = "v2.3.5"
+t = "2.3.5"
 fooa = 0.5
-
-if test == 'true':
-	bear_shell_testing = "(testing)"
-else:
-	bear_shell_testing = ""
-
-def makeTest():
-	f = open('gitbranch.txt', 'w')
-	f.write("true")
-	f.close()
 
 def clearScreen():
 	if name == 'nt':
@@ -30,6 +17,10 @@ def writeVersionNum(ver):
 	with open('data/version.data', 'w') as f:
 		f.writelines(ver)
 
+def writeVerNumToVerTXT(d):
+	with open('ver.txt', 'w') as f:
+		f.writelines(d)
+
 def startupVer():
 	import os
 	from dotenv import load_dotenv
@@ -37,10 +28,10 @@ def startupVer():
 	load_dotenv()
 	token = os.environ.get("api")
 	g = Github(token)
-	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
+	repo = g.get_repo("BizzyPythonBear/Bear-Shell")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.4'":
+	if str(f) == f"b'{t}'":
 		print("Bear-Shell is up-to-date")
 		time.sleep(1)
 	else:
@@ -173,6 +164,24 @@ except ImportError:
 			print("Not applicable")
 else:
 	print("Module, 'ctypes' found!")
+	time.sleep(fooa)
+
+try:
+	import rich
+except ImportError:
+	while True:
+		s = input("The module, 'rich' was not found... Install? (y/n) ")
+		if s == 'y':
+			system('python3 -m pip install rich')
+			break
+		elif s == 'n':
+			print("Continuing startup...")
+			missingImport += 1
+			break
+		else:
+			print("Not applicable")
+else:
+	print("Module, 'rich' found!")
 	time.sleep(fooa)
 
 try:
@@ -359,10 +368,6 @@ def setupPage():
 
 	clearScreen()
 
-	testing = open('gitbranch.txt')
-	test = testing.read()
-
-
 	with open('data/info.data', 'w') as f:
 		f.writelines("1")
 
@@ -377,17 +382,10 @@ def setupPage():
 		time.sleep(0.1)
 		sys.stdout.write('\b')
 	clearScreen()
-
-	if test == 'true':
-		print(f"""
-	Bear Shell {bear_shell} (testing)
-	Bear Shell Registration
-		""")
-	else:
-		print(f"""
-	Bear Shell {bear_shell} (stable)
-	Bear Shell Registration
-		""")
+	print(f"""{bcolors.OKBLUE}
+Bear Shell {bear_shell}
+Bear Shell Registration
+	""")
 
 	usrname = input("Please enter your new username: ")
 	pas = input("Please enter your new password: ")
@@ -425,19 +423,10 @@ def loginPage():
 		sys.stdout.write('\b')
 	clearScreen()
 
-	testing = open('gitbranch.txt')
-	test = testing.read()
-
-	if test == 'true':
-		print(f"""
-	Bear Shell {bear_shell} (testing)
-	Bear Shell Login
-		""")
-	else:
-		print(f"""
-	Bear Shell {bear_shell} (stable)
-	Bear Shell Login
-		""")
+	print(f"""{bcolors.OKBLUE}
+Bear Shell {bear_shell}
+Bear Shell Login
+	""")
 
 	while True:
 		log = input("Enter Password To " + l_n + " To Login: ")
@@ -499,6 +488,7 @@ def gameSelect():
 
 		else:
 			errorHandle("Game doesn't exist!", ErrorCodes.Err4)
+			gameSelect()
 
 
 def gameMenu():
@@ -562,7 +552,8 @@ def terminalMain():
 	clearScreen()
 	cwd = os.getcwd()
 	print("Welcome to the Bear-Shell Terminal")
-	print(f"Ver {bear_shell} " + bear_shell_testing)
+	print(f"Ver {bear_shell}")
+	f = 0
 	def helpCom():
 		clearScreen()
 		print("""
@@ -778,7 +769,12 @@ def terminalMain():
 				print("\n")
 
 		else:
-			print("The command, " "'" + bruhVariable + "'" " wasn't found!")
+			f += 1
+			print("Not a command!")
+
+		if f == 10:
+			blue.blueScreen()
+			break
 
 def gameDevSelect():
 	class bcolors:
@@ -823,21 +819,12 @@ def homePage():
 	login_name = open('data/username.pass')
 	l_p = login_pass.read()
 	l_n = login_name.read()
-	testing = open('gitbranch.txt')
-	test = testing.read()
 	ar = 0
-	if test == 'true':
-		print(f"""{bcolors.OKBLUE}
-	Bear Shell {bear_shell} (testing)
-	Home page
+	print(f"""
+Bear Shell {bear_shell}
+Bear Shell Home-Page
+	""")
 
-		""")
-	else:
-		print(f"""{bcolors.OKBLUE}
-	Bear Shell {bear_shell} (stable)
-	Home page
-
-		""")
 	print(f"{bcolors.OKBLUE}Welcome, " + l_n)
 	print(f"{bcolors.OKBLUE}The Date Is: " + time.strftime("%m/%d/%y"))
 	print(f"""{bcolors.OKBLUE}
@@ -871,12 +858,6 @@ def homePage():
 
 	elif select == '4':
 		clearScreen()
-		testing = open('gitbranch.txt')
-		test = testing.read()
-		if test == 'true':
-			gitf = "Testing"
-		else:
-			gitf = "Main"
 		while True:
 			b_login = input(str("Please Enter The Password To " + l_n + " To Open BioS: "))
 			if b_login == l_p:
@@ -886,7 +867,6 @@ def homePage():
 				host_ip = socket.gethostbyname(host_name)
 				print("[1] USER NAME: " + l_n)
 				print("[2] PASSWORD: " + l_p)
-				print("[3] Current Repo Branch: " + gitf)
 				print("Hostname:", host_name)
 				print("LOCAL IPS: " + host_ip)
 				edit_b = input("Enter [?] to change setting: ")
@@ -908,74 +888,6 @@ def homePage():
 					input("Press Enter To Restart: ")
 					homePage()
 					os.system('exit')
-
-				if edit_b == '3':
-					clearScreen()
-					while True:
-						if test == 'true':
-							ax = input("Would you like to change to the main (stable) repo? ")
-							a2 = ax.lower()
-							if a2 == 'y':
-								while True:
-									asa = input("Are you sure you want to change back to the main branch? ")
-									das = asa.lower()
-									if das == 'y':
-										#print("Now downgrading to the (stable) main branch...")
-										#time.sleep(1)
-										#system("cd ../")
-										#system("rm -rf bear-shell")
-										#system("git clone https://github.com/BizzyPythonBear/Bear-Shell/")
-										#system("cd bear-shell")
-										#system("python3 BearCMDos.py")
-										#
-										print("This command is a work in progress.")
-
-									elif das == 'n':
-										print("Returning to menu... ")
-										time.sleep(0.5)
-										clearScreen()
-										homePage()
-										break
-										break
-									else:
-										print("Not an option.")
-							elif a2 == 'n':
-								print("Not changing to (main (stable)) branch...")
-								print("Returning to menu...")
-								time.sleep(0.5)
-								clearScreen()
-								homePage()
-								break
-							else:
-								print("Not an option!")
-
-						else:
-							ax = input("Would you like to change to the testing (unstable) repo? ")
-							a2 = ax.lower()
-							if a2 == 'y':
-								while True:
-									asa = input("Are you sure you want to change to the testing branch? ")
-									das = asa.lower()
-									if das == 'y':
-										pass
-									elif das == 'n':
-										print("Returning to menu... ")
-										time.sleep(0.5)
-										clearScreen()
-										homePage()
-										break
-										break
-									else:
-										print("Not an option.")
-							elif a2 == 'n':
-								print("Not changing to (testing (unstable)) branch...")
-								print("Returning to menu...")
-								time.sleep(0.5)
-								clearScreen()
-								homePage()
-								break
-							else:
-								print("Not an option!")
 
 				if edit_b == 'E':
 					clearScreen()
@@ -1007,6 +919,11 @@ def homePage():
 	elif select == '7':
 		clearDumbScreen()
 		print(f"""
+{bcolors.OKBLUE}Migration 2.3.5:
+	{bcolors.OKGREEN}[+] Bug Fixes
+	{bcolors.OKGREEN}[+] Migration from testing over to stable
+	{bcolors.OKGREEN}[+] Spamming Commands in the terminal now shows my version of BSOD, "TOD", which stands for
+	text of death.
 {bcolors.OKBLUE}Patch 1.3.4:
 	{bcolors.OKGREEN}[+] Better command handling for developer, root, and regular terminal.
 {bcolors.OKBLUE}Patch 1.3.3:
@@ -1136,7 +1053,7 @@ def homePage():
 		print("Current Github Repo Version: " + str(f))
 		print("Checking if up-to-date...")
 		time.sleep(1)
-		if str(f) == "b'1.3.4'":
+		if str(f) == f"b'{t}'":
 			clearScreen()
 			print("You're up to date!")
 			time.sleep(1)
@@ -1166,18 +1083,10 @@ def devPage():
 	l_p = login_pass.read()
 	l_n = login_name.read()
 	textColor = bcolors.OKGREEN
-	if test == 'true':
-		print(f"""{bcolors.OKBLUE}
-	Bear Shell {bear_shell} (testing)
-	Home page (DEVELOPER MODE: True)
-
-		""")
-	else:
-		print(f"""{bcolors.OKBLUE}
-	Bear Shell {bear_shell} (stable)
-	Home page (DEVELOPER MODE: True)
-
-		""")
+	print(f"""
+Bear Shell {bear_shell}
+Bear Shell Developer-Page
+	""")
 	print(f"{bcolors.OKBLUE}Welcome, Admin")
 	print(f"{bcolors.OKBLUE}The Date Is: " + time.strftime("%m/%d/%y"))
 	print(f"""{bcolors.OKBLUE}
@@ -1210,10 +1119,6 @@ def devPage():
 
 	elif select == '4':
 		clearScreen()
-		if test == 'true':
-			gitf = "Testing"
-		else:
-			gitf = "Main"
 		while True:
 			print("Opening BioS")
 			print("Press enter the command 'e' to exit")
@@ -1221,7 +1126,6 @@ def devPage():
 			host_ip = socket.gethostbyname(host_name)
 			print("[1] USER NAME: " + l_n)
 			print("[2] PASSWORD: " + l_p)
-			print("[3] Current Repo Branch: " + gitf)
 			print("Hostname:", host_name)
 			print("LOCAL IPS: " + host_ip)
 			edit_b = input("Enter [?] to change setting: ")
@@ -1241,65 +1145,7 @@ def devPage():
 				print("Password Changed To " + edit_p)
 				input("Press Enter To Restart: ")
 				devPage()
-				os.system('exit')
-
-			if edit_b == '3':
-				clearScreen()
-				while True:
-					if test == 'true':
-						ax = input("Would you like to change to the main (stable) repo? ")
-						a2 = ax.lower()
-						if a2 == 'y':
-							while True:
-								asa = input("Are you sure you want to change back to the main branch? ")
-								das = asa.lower()
-								if das == 'y':
-									print("This command is a work in progress.")
-								elif das == 'n':
-									print("Returning to menu... ")
-									time.sleep(0.5)
-									clearScreen()
-									devPage()
-									break
-									break
-								else:
-									print("Not an option.")
-						elif a2 == 'n':
-							print("Not changing to (main (stable)) branch...")
-							print("Returning to menu...")
-							time.sleep(0.5)
-							clearScreen()
-							devPage()
-							break
-						else:
-							print("Not an option!")
-					else:
-						ax = input("Would you like to change to the testing (unstable) repo? ")
-						a2 = ax.lower()
-						if a2 == 'y':
-							while True:
-								asa = input("Are you sure you want to change to the testing branch? ")
-								das = asa.lower()
-								if das == 'y':
-									pass
-								elif das == 'n':
-									print("Returning to menu... ")
-									time.sleep(0.5)
-									clearScreen()
-									devPage()
-									break
-									break
-								else:
-									print("Not an option.")
-						elif a2 == 'n':
-							print("Not changing to (testing (unstable)) branch...")
-							print("Returning to menu...")
-							time.sleep(0.5)
-							clearScreen()
-							devPage()
-							break
-						else:
-							print("Not an option!")						
+				os.system('exit')				
 
 			if edit_b == 'E':
 				clearScreen()
@@ -1328,6 +1174,13 @@ def devPage():
 	elif select == '7':
 		clearScreen()
 		print(f"""
+{bcolors.OKBLUE}Migration 2.3.5:
+	{bcolors.OKGREEN}[+] Bug Fixes
+	{bcolors.OKGREEN}[+] Migration from testing over to stable
+	{bcolors.OKGREEN}[+] Spamming Commands in the terminal now shows my version of BSOD, "TOD", which stands for
+	text of death.
+{bcolors.OKBLUE}Patch 1.3.4:
+	{bcolors.OKGREEN}[+] Better command handling for developer, root, and regular terminal.
 {bcolors.OKBLUE}Patch 1.3.3:
 	{bcolors.OKGREEN}[+] Added Frame to start Github Branch Changing in BIOS
 	{bcolors.OKGREEN}[+] Better Import verifier
@@ -1447,14 +1300,14 @@ def devPage():
 		load_dotenv()
 		token = os.environ.get("api")
 		g = Github(token)
-		repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
+		repo = g.get_repo("BizzyPythonBear/Bear-Shell")
 		print("Checking for updates...")
 		v = repo.get_contents("ver.txt")
 		f = v.decoded_content
 		print("Current Github Repo Version: " + str(f))
 		print("Checking if up-to-date...")
 		time.sleep(1)
-		if str(f) == "b'1.3.4'":
+		if str(f) == f"b'{t}'":
 			clearScreen()
 			print("You're up to date!")
 			time.sleep(1)
@@ -1603,6 +1456,7 @@ def devTermMain():
 	print("Welcome to the Bear-Shell Terminal")
 	print(f"Ver {bear_shell}")
 	print("(DEVELOPER MODE: ACTIVATED) (ROOT: TRUE)")
+	f = 0
 	def helpCom():
 		clearScreen()
 		print("""
@@ -1799,7 +1653,12 @@ def devTermMain():
 				print("\n")
 
 		else:
-			print("The command, " "'" + bruhVariable + "'" " wasn't found!")
+			f += 1
+			print("Not a command!")
+
+		if f == 10:
+			blue.blueScreen()
+			break
 
 import os
 import home as H
@@ -1826,6 +1685,7 @@ def rootTerm():
 	print(f"{bcolors.OKCYAN}Welcome to the Bear-Shell Terminal")
 	print(f"Ver {bear_shell}")
 	print("You're in the ROOT terminal, enter command 'exit' to return to menu.")
+	f = 0
 	def helpCom():
 		clearScreen()
 		print("""
@@ -2023,7 +1883,12 @@ def rootTerm():
 						print("\n")
 
 				else:
-					print("The command, " "'" + bruhVariable + "'" " wasn't found!")
+					f += 1
+					print("Not a command!")
+
+				if f == 10:
+					blue.blueScreen()
+					break
 
 # Importing Required libraries & Modules
 from tkinter import *
@@ -2785,9 +2650,13 @@ def backgroundProcess():
 					time.sleep(1)
 					break
 
-				else:
-					errorHandle("Not a valid command! ", ErrorCodes.ErrCode1)
-					print(f"{bcolors.WARNING}")
+		else:
+			f += 1
+			print("Not a command!")
+
+		if f == 10:
+			blue.blueScreen()
+			break
 
 		elif f == 'cat':
 			faf = input("What file would you like to look into? ")
@@ -2839,6 +2708,7 @@ def rootTest():
 	print("Bear-Shell Frame Work (Testing) (root)")
 	print("Ver 13023a")
 	cwd = os.getcwd()
+	f = 0
 		
 	def helpCom():
 		clearScreen()
@@ -2933,7 +2803,12 @@ def rootTest():
 				system('"C:/Program Files (x86)/Vim/vim82/vim.exe"')
 
 			else:
+				f += 1
 				print("Not a command!")
+
+			if f == 10:
+				blue.blueScreen()
+				break
 
 		elif bear_len > 1:
 			bearbear = str(bear_split[0])
@@ -3013,7 +2888,7 @@ def rootTest():
 					print("Current Github Repo Version: " + str(f))
 					print("Checking if up-to-date...")
 					time.sleep(1)
-					if str(f) == "b'1.3.4'":
+					if str(f) == f"b'{t}'":
 						clearScreen()
 						print("You're up to date!")
 						print("The system wont be updated.")
@@ -3052,7 +2927,7 @@ def rootTest():
 					print("Current Github Repo Version: " + str(f))
 					print("Checking if up-to-date...")
 					time.sleep(1)
-					if str(f) == "b'1.3.4'":
+					if str(f) == f"b'{t}'":
 						clearScreen()
 						print("You're up to date!")
 						print("No need for an update")
@@ -3277,8 +3152,6 @@ def devCalculator():
 
 def sysInfo():
 	import os
-	testing = open('gitbranch.txt')
-	test = testing.read()
 	varss = open('data/version.data')
 	var = varss.read()
 	from dotenv import load_dotenv
@@ -3290,7 +3163,7 @@ def sysInfo():
 	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.4'":
+	if str(f) == f"b'{t}'":
 		upDate = "Up-To-Date!"
 	else:
 		upDate = "Out-Of-Date!"
@@ -3300,18 +3173,12 @@ def sysInfo():
 	else:
 		os = "Linux"
 
-	if test == 'true':
-		gitBranch = "True "
-	else:
-		gitBranch = "False"
-
 	while True:
 		print(f"""
 Current Shell: Version {var}
 Current OS: {os}
 Up-To-Date: {upDate}
 Python Version: {version}
-Using Testing Branch: {gitBranch}
 ----------------------------
 Bear-Shell; Created by Michael S.
 		""")
@@ -3325,8 +3192,6 @@ Bear-Shell; Created by Michael S.
 
 def devSysInfo():
 	import os
-	testing = open('gitbranch.txt')
-	test = testing.read()
 	varss = open('data/version.data')
 	var = varss.read()
 	from dotenv import load_dotenv
@@ -3338,7 +3203,7 @@ def devSysInfo():
 	repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
 	v = repo.get_contents("ver.txt")
 	f = v.decoded_content
-	if str(f) == "b'1.3.4'":
+	if str(f) == f"b'{t}'":
 		upDate = "Up-To-Date!"
 	else:
 		upDate = "Out-Of-Date!"
@@ -3348,18 +3213,12 @@ def devSysInfo():
 	else:
 		os = "Linux"
 
-	if test == 'true':
-		gitBranch = "True "
-	else:
-		gitBranch = "False"
-
 	while True:
 		print(f"""
 Current Shell: Version {var}
 Current OS: {os}
 Up-To-Date: {upDate}
 Python Version: {version}
-Using Testing Branch: {gitBranch}
 ----------------------------
 Bear-Shell; Created by Michael S.
 		""")
@@ -3380,7 +3239,7 @@ Bear-Shell; Created by Michael S.
 # When this file is ran, clear the screen
 clearScreen()
 writeVersionNum(t)
-makeTest()
+writeVerNumToVerTXT(t)
 #  To-Do
 # --------------------
 # [X] Finish Calculator
