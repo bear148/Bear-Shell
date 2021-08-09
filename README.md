@@ -46,6 +46,7 @@ To use Bear-Shell, you'll need to install:
 -	[This](https://stackoverflow.com/questions/32417379/what-is-needed-for-curses-in-python-3-4-on-windows7) goes into more depth on how to install it.
 - 	If you are on linux, curses is included with python and wont need to be installed.
 - [Vim 8.2](https://www.vim.org/download.php)
+- [BPM](https://github.com/Bear-Package-Management) (To install view [bpm Docs](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/docs/BPM-Docs.md))
 
 <a name="upcome"></a>
 
@@ -66,27 +67,27 @@ By flavors I mean making new flavors of Bear-Shell, like Ubuntu is a flavor of D
 ## Newest Updates
 <b>Disclaimer!</b> Patches will not be shown here! This area is for big releases only! The third digit is for patches, and those are pretty much always bug fixes, so they wont be put here.
 <br>
-In the most recent update, version 2.3.5, is the full migration from the testing branch, to the main branch. (This is because there is only one repository now)
 
-- Migration: Everything that once said (testing), anything that checks if there is a testing branch, essentially everything that has to do with the testing branch has been removed.
-- Small Bug fixes
+In the most recent update, version 2.4.5, I added [BPM](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/docs/BPM-Docs.md) integration. BPM is the package manager I made, it's pretty simple. I haven't added any downloadable repos yet.
 
-I wanted to add this feature because I thought about Bear-Shell's whole point, which is to be fast, efficient, and easy. Which before this update, you had to manually install some of the libraries/packages. Which isn't very easy, and efficient, so I made it so that all the user has to do is start the shell. (e.g. via ```make```)
+- BPM: Package Manager
+- Read [BPM Docs](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/docs/BPM-Docs.md) to learn how to install bpm
 
 <a name="old"></a>
 
 ## Older Updates
+- Ver 1.3.4   (Patch)
 - Ver 1.3.3   (Patch)
 - Ver 1.3.2.2 (Patch)
-- Ver 1.3.2.1
-- Ver 1.3.1.1
-- Ver 1.3.0.1
-- Ver 1.3.0
-- Ver 1.2.9
+- Ver 1.3.2.1 (Update)
+- Ver 1.3.1.1 (Update)
+- Ver 1.3.0.1 (Patch)
+- Ver 1.3.0   (Patch)
+- Ver 1.2.9   (Patch)
 - 	 |
-- Ver 1.2.1
-- Ver 0.2.1
-- Ver 0.0.1
+- Ver 1.2.1   (Large Update)
+- Ver 0.2.1   (Update)
+- Ver 0.0.1   (Base Files)
 
 To see previous updates, you can go [here](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/prev.txt), or you can run the shell and when in the menu, and go to the update log. (Hit 7 and then Enter)
 
@@ -106,6 +107,7 @@ The current commands that can be used in the included terminal are as listed:
 - apt-get
 - cat
 - git
+- bpm
 
 <a name="add"></a>
 
