@@ -46,7 +46,7 @@ To use Bear-Shell, you'll need to install:
 -	[This](https://stackoverflow.com/questions/32417379/what-is-needed-for-curses-in-python-3-4-on-windows7) goes into more depth on how to install it.
 - 	If you are on linux, curses is included with python and wont need to be installed.
 - [Vim 8.2](https://www.vim.org/download.php)
-- [BPM](https://github.com/Bear-Package-Management) (To install view [bpm Docs](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/docs/BPM-Docs.md))
+- [BPM 1.2.3](https://github.com/Bear-Package-Management) (To install view [bpm Docs](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/docs/BPM-Docs.md))
 
 <a name="upcome"></a>
 
@@ -68,14 +68,15 @@ By flavors I mean making new flavors of Bear-Shell, like Ubuntu is a flavor of D
 <b>Disclaimer!</b> Patches will not be shown here! This area is for big releases only! The third digit is for patches, and those are pretty much always bug fixes, so they wont be put here.
 <br>
 
-In the most recent update, version 2.4.5, I added [BPM](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/docs/BPM-Docs.md) integration. BPM is the package manager I made, it's pretty simple. I haven't added any downloadable repos yet.
+In the most recent update, version 2.5.5, I added more [BPM](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/docs/BPM-Docs.md) commands. BPM is the package manager I made, it's pretty simple. I have made a test repo, it doesn't do anything though.
 
-- BPM: Package Manager
+- More BPM Commands: ```bpm update --full``` ```bpm version -v``` ```bpm list --all```
 - Read [BPM Docs](https://github.com/BizzyPythonBear/Bear-Shell/blob/main/docs/BPM-Docs.md) to learn how to install bpm
 
 <a name="old"></a>
 
 ## Older Updates
+- Ver 2.4.5   (Large Update)
 - Ver 1.3.4   (Patch)
 - Ver 1.3.3   (Patch)
 - Ver 1.3.2.2 (Patch)

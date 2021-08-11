@@ -3,8 +3,8 @@ from sys import *
 from os import name, system
 
 missingImport = 0
-bear_shell = "v2.4.5"
-t = "2.4.5"
+bear_shell = "v2.5.5"
+t = "2.5.5"
 fooa = 0.5
 foundBPM = False
 
@@ -803,6 +803,7 @@ def terminalMain():
 			com1 = bearbear.lower()
 			if com1 == 'bpm' and foundBPM:
 				import bpm.manager as bpm
+				bpmVer = '1.2.3'
 				bear = bearbear1.lower()
 				if bear == 'install':
 					if fooad == 'manager':
@@ -816,10 +817,49 @@ def terminalMain():
 				elif bear == 'help':
 					print("Usage: bpm <option> <package>")
 					print("Options:")
-					print("		install: installs given package")
-					print(" 	remove:  removes given package ")
+					print("	install: installs given package")
+					print(" remove:  removes given package ")
 				elif bear == 'version':
 					bpm.version()
+				elif bear == 'list':
+					if fooad == '--all':
+						bpm.list()
+					else:
+						bpm.list()
+				elif bear == 'update':
+					if fooad == '--full':
+						from dotenv import load_dotenv
+						from github import Github
+						clearScreen()
+						load_dotenv()
+						token = os.environ.get("api")
+						g = Github(token)
+						repo = g.get_repo("Bear-Package-Management/manager")
+						print("Checking for updates...")
+						v = repo.get_contents("ver.txt")
+						f = v.decoded_content
+						print("Current Github Repo Version: " + str(f))
+						print("Checking for 'bpm' updates...")
+						if str(f) == f"b'{bpmVer}'":
+							clearScreen()
+							print("You're up to date!")
+							time.sleep(1)
+							clearScreen()
+							rootTest()
+						else:
+							while True:
+								d = input("You aren't up-to-date. Update? ")
+								if d == 'n':
+									print("Returning to menu...")
+									time.sleep(1)
+									rootTest()
+									break
+								elif d == 'y':
+									pass
+								else:
+									print("That isn't a command!")
+					else:
+						print("Please make sure you do 'bpm update --full' to update!")
 			else:
 				print("Command not found or BPM is not installed")
 
@@ -974,6 +1014,10 @@ Bear Shell Home-Page
 	elif select == '7':
 		clearDumbScreen()
 		print(f"""
+{bcolors.OKBLUE}Update 2.5.5:
+	{bcolors.OKGREEN}[+] More BPM Commands
+	{bcolors.OKGREEN}[+] Fixed Update Checker for Developer and User Menu
+	{bcolors.OKCYAN}[!] Config Files Coming soon!
 {bcolors.OKBLUE}Update 2.4.5:
 	{bcolors.OKGREEN}[+] BPM Now works with Bear-Shell!
 		{bcolors.OKCYAN}[!] Usage: 'bpm <option> <package>'
@@ -1104,7 +1148,7 @@ Bear Shell Home-Page
 		load_dotenv()
 		token = os.environ.get("api")
 		g = Github(token)
-		repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
+		repo = g.get_repo("BizzyPythonBear/Bear-Shell")
 		print("Checking for updates...")
 		v = repo.get_contents("ver.txt")
 		f = v.decoded_content
@@ -1232,6 +1276,10 @@ Bear Shell Developer-Page
 	elif select == '7':
 		clearScreen()
 		print(f"""
+{bcolors.OKBLUE}Update 2.5.5:
+	{bcolors.OKGREEN}[+] More BPM Commands
+	{bcolors.OKGREEN}[+] Fixed Update Checker for Developer and User Menu
+	{bcolors.OKCYAN}[!] Config Files Coming soon!
 {bcolors.OKBLUE}Update 2.4.5:
 	{bcolors.OKGREEN}[+] BPM Now works with Bear-Shell!
 		{bcolors.OKCYAN}[!] Usage: 'bpm <option> <package>'
@@ -1723,6 +1771,7 @@ def devTermMain():
 			com1 = bearbear.lower()
 			if com1 == 'bpm' and foundBPM:
 				import bpm.manager as bpm
+				bpmVer = '1.2.3'
 				bear = bearbear1.lower()
 				if bear == 'install':
 					if fooad == 'manager':
@@ -1736,10 +1785,49 @@ def devTermMain():
 				elif bear == 'help':
 					print("Usage: bpm <option> <package>")
 					print("Options:")
-					print("		install: installs given package")
-					print(" 	remove:  removes given package ")
+					print("	install: installs given package")
+					print(" remove:  removes given package ")
 				elif bear == 'version':
 					bpm.version()
+				elif bear == 'list':
+					if fooad == '--all':
+						bpm.list()
+					else:
+						bpm.list()
+				elif bear == 'update':
+					if fooad == '--full':
+						from dotenv import load_dotenv
+						from github import Github
+						clearScreen()
+						load_dotenv()
+						token = os.environ.get("api")
+						g = Github(token)
+						repo = g.get_repo("Bear-Package-Management/manager")
+						print("Checking for updates...")
+						v = repo.get_contents("ver.txt")
+						f = v.decoded_content
+						print("Current Github Repo Version: " + str(f))
+						print("Checking for 'bpm' updates...")
+						if str(f) == f"b'{bpmVer}'":
+							clearScreen()
+							print("You're up to date!")
+							time.sleep(1)
+							clearScreen()
+							rootTest()
+						else:
+							while True:
+								d = input("You aren't up-to-date. Update? ")
+								if d == 'n':
+									print("Returning to menu...")
+									time.sleep(1)
+									rootTest()
+									break
+								elif d == 'y':
+									pass
+								else:
+									print("That isn't a command!")
+					else:
+						print("Please make sure you do 'bpm update --full' to update!")
 			else:
 				print("Command not found or BPM is not installed")
 
@@ -1975,6 +2063,7 @@ def rootTerm():
 					com1 = bearbear.lower()
 					if com1 == 'bpm' and foundBPM:
 						import bpm.manager as bpm
+						bpmVer = '1.2.3'
 						bear = bearbear1.lower()
 						if bear == 'install':
 							if fooad == 'manager':
@@ -1988,21 +2077,51 @@ def rootTerm():
 						elif bear == 'help':
 							print("Usage: bpm <option> <package>")
 							print("Options:")
-							print("		install: installs given package")
-							print(" 	remove:  removes given package ")
+							print("	install: installs given package")
+							print(" remove:  removes given package ")
 						elif bear == 'version':
 							bpm.version()
-						else:
-							print("That isn't an option!")
+						elif bear == 'list':
+							if fooad == '--all':
+								bpm.list()
+							else:
+								bpm.list()
+						elif bear == 'update':
+							if fooad == '--full':
+								from dotenv import load_dotenv
+								from github import Github
+								clearScreen()
+								load_dotenv()
+								token = os.environ.get("api")
+								g = Github(token)
+								repo = g.get_repo("Bear-Package-Management/manager")
+								print("Checking for updates...")
+								v = repo.get_contents("ver.txt")
+								f = v.decoded_content
+								print("Current Github Repo Version: " + str(f))
+								print("Checking for 'bpm' updates...")
+								if str(f) == f"b'{bpmVer}'":
+									clearScreen()
+									print("You're up to date!")
+									time.sleep(1)
+									clearScreen()
+									rootTest()
+								else:
+									while True:
+										d = input("You aren't up-to-date. Update? ")
+										if d == 'n':
+											print("Returning to menu...")
+											time.sleep(1)
+											rootTest()
+											break
+										elif d == 'y':
+											pass
+										else:
+											print("That isn't a command!")
+							else:
+								print("Please make sure you do 'bpm update --full' to update!")
 					else:
 						print("Command not found or BPM is not installed")
-				else:
-					f += 1
-					print("Not a command!")
-
-				if f == 10:
-					blue.blueScreen()
-					break
 
 # Importing Required libraries & Modules
 from tkinter import *
@@ -2851,6 +2970,8 @@ def rootTest():
 		  Options:
 		    install: installs package
 			remove:  removes package
+			version: shows current bpm version
+			list:    lists how many packages installed
 
 		More commands to come with future updates:
 		""")
@@ -3000,7 +3121,7 @@ def rootTest():
 					load_dotenv()
 					token = os.environ.get("api")
 					g = Github(token)
-					repo = g.get_repo("BizzyPythonBear/Bear-Shell-Unstable")
+					repo = g.get_repo("BizzyPythonBear/Bear-Shell")
 					print("Checking for updates...")
 					v = repo.get_contents("ver.txt")
 					f = v.decoded_content
@@ -3081,6 +3202,7 @@ def rootTest():
 				com1 = bearbear.lower()
 				if com1 == 'bpm' and foundBPM:
 					import bpm.manager as bpm
+					bpmVer = '1.2.3'
 					bear = bearbear1.lower()
 					if bear == 'install':
 						if fooad == 'manager':
@@ -3094,15 +3216,54 @@ def rootTest():
 					elif bear == 'help':
 						print("Usage: bpm <option> <package>")
 						print("Options:")
-						print("		install: installs given package")
-						print(" 	remove:  removes given package ")
+						print("	install: installs given package")
+						print(" remove:  removes given package ")
 					elif bear == 'version':
 						bpm.version()
+					elif bear == 'list':
+						if fooad == '--all':
+							bpm.list()
+						else:
+							bpm.list()
+					elif bear == 'update':
+						if fooad == '--full':
+							from dotenv import load_dotenv
+							from github import Github
+							clearScreen()
+							load_dotenv()
+							token = os.environ.get("api")
+							g = Github(token)
+							repo = g.get_repo("Bear-Package-Management/manager")
+							print("Checking for updates...")
+							v = repo.get_contents("ver.txt")
+							f = v.decoded_content
+							print("Current Github Repo Version: " + str(f))
+							print("Checking for 'bpm' updates...")
+							if str(f) == f"b'{bpmVer}'":
+								clearScreen()
+								print("You're up to date!")
+								time.sleep(1)
+								clearScreen()
+								rootTest()
+							else:
+								while True:
+									d = input("You aren't up-to-date. Update? ")
+									if d == 'n':
+										print("Returning to menu...")
+										time.sleep(1)
+										rootTest()
+										break
+									elif d == 'y':
+										pass
+									else:
+										print("That isn't a command!")
+						else:
+							print("Please make sure you do 'bpm update --full' to update!")
 				else:
 					print("Command not found or BPM is not installed")
 
-			else:
-				print("Not a command!")
+		else:
+			print("Not a command!")
 
 def calculator():
 	clearScreen()

@@ -1,3 +1,6 @@
+Ver 2.4.5:
+ - BPM Integration
+
 Ver 1.3.4:
  - Better command handling for developer, root, and regular terminal.
 
